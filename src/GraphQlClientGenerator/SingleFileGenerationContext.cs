@@ -35,23 +35,21 @@ public class SingleFileGenerationContext(GraphQlSchema schema, TextWriter writer
         }
     }
 
-    public override void BeforeBaseClassGeneration() => WriteLine("#region base classes");
+    public override void BeforeBaseClassGeneration() => WriteLine("");
 
     public override void AfterBaseClassGeneration()
     {
-        WriteLine("#endregion");
         Writer.WriteLine();
     }
 
-    public override void BeforeGraphQlTypeNameGeneration() => WriteLine("#region GraphQL type helpers");
+    public override void BeforeGraphQlTypeNameGeneration() => WriteLine("");
 
     public override void AfterGraphQlTypeNameGeneration()
     {
-        WriteLine("#endregion");
         Writer.WriteLine();
     }
 
-    public override void BeforeEnumsGeneration() => WriteLine("#region enums");
+    public override void BeforeEnumsGeneration() => WriteLine("");
 
     public override void BeforeEnumGeneration(ObjectGenerationContext context)
     {
@@ -63,14 +61,12 @@ public class SingleFileGenerationContext(GraphQlSchema schema, TextWriter writer
 
     public override void AfterEnumsGeneration()
     {
-        WriteLine("#endregion");
         Writer.WriteLine();
     }
 
     public override void BeforeDirectivesGeneration()
     {
         EnterNullableReferenceScope();
-        WriteLine("#region directives");
     }
 
     public override void BeforeDirectiveGeneration(ObjectGenerationContext context)
@@ -83,14 +79,12 @@ public class SingleFileGenerationContext(GraphQlSchema schema, TextWriter writer
 
     public override void AfterDirectivesGeneration()
     {
-        WriteLine("#endregion");
         Writer.WriteLine();
     }
 
     public override void BeforeQueryBuildersGeneration()
     {
         EnterNullableReferenceScope();
-        WriteLine("#region builder classes");
     }
 
     public override void BeforeQueryBuilderGeneration(ObjectGenerationContext context)
@@ -103,19 +97,16 @@ public class SingleFileGenerationContext(GraphQlSchema schema, TextWriter writer
 
     public override void AfterQueryBuildersGeneration()
     {
-        WriteLine("#endregion");
         Writer.WriteLine();
     }
 
     public override void BeforeInputClassesGeneration()
     {
         EnterNullableReferenceScope();
-        WriteLine("#region input classes");
     }
 
     public override void AfterInputClassesGeneration()
     {
-        WriteLine("#endregion");
         Writer.WriteLine();
     }
 
@@ -123,7 +114,6 @@ public class SingleFileGenerationContext(GraphQlSchema schema, TextWriter writer
     {
         _dataClasses = 0;
         EnterNullableReferenceScope();
-        WriteLine("#region data classes");
     }
 
     public override void BeforeDataClassGeneration(ObjectGenerationContext context)
@@ -138,7 +128,7 @@ public class SingleFileGenerationContext(GraphQlSchema schema, TextWriter writer
 
     public override void AfterDataClassGeneration(ObjectGenerationContext context) => _dataClasses++;
 
-    public override void AfterDataClassesGeneration() => WriteLine("#endregion");
+    public override void AfterDataClassesGeneration() => WriteLine("");
 
     public override void BeforeDataPropertyGeneration(PropertyGenerationContext context)
     {

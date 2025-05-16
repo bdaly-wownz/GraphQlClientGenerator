@@ -131,36 +131,9 @@ public abstract class GenerationContext
         Writer.Write(' ');
         Writer.Write(context.PropertyName);
 
-        var generateBackingFields = Configuration.PropertyGeneration is PropertyGenerationOption.BackingField && typeKind is GraphQlTypeKind.Object;
-        if (generateBackingFields)
-        {
-            var useCompatibleVersion = Configuration.CSharpVersion is CSharpVersion.Compatible;
-            var backingFieldName = Configuration.CSharpVersion.IsFieldKeywordSupported() ? "field" : context.PropertyBackingFieldName;
-            Writer.Write(" { get");
-            Writer.Write(useCompatibleVersion ? " { return " : " => ");
-            Writer.Write(backingFieldName);
-            Writer.Write(";");
-
-            if (useCompatibleVersion)
-                Writer.Write(" }");
-
-            Writer.Write(context.SetterAccessibility.ToSetterAccessibilityPrefix());
-            Writer.Write(" set");
-            Writer.Write(useCompatibleVersion ? " { " : " => ");
-            Writer.Write(backingFieldName);
-            Writer.Write(" = value;");
-
-            if (useCompatibleVersion)
-                Writer.Write(" }");
-
-            Writer.WriteLine(" }");
-        }
-        else
-        {
-            Writer.Write(" { get; ");
-            Writer.Write(context.SetterAccessibility.ToSetterAccessibilityPrefix());
-            Writer.WriteLine("set; }");
-        }
+        Writer.Write(" { get; ");
+        Writer.Write(context.SetterAccessibility.ToSetterAccessibilityPrefix());
+        Writer.WriteLine("set; }");
     }
 
     public abstract void AfterDataPropertyGeneration(PropertyGenerationContext context);
@@ -313,14 +286,14 @@ public abstract class GenerationContext
     internal ScalarFieldTypeDescription ResolveScalarNetType(ScalarFieldTypeProviderContext context) =>
         context.FieldType.UnwrapIfNonNull().Name
             switch
-            {
-                GraphQlTypeBase.GraphQlTypeScalarInteger => GetIntegerNetType(context),
-                GraphQlTypeBase.GraphQlTypeScalarString => GetStringNetType(context),
-                GraphQlTypeBase.GraphQlTypeScalarFloat => GetFloatNetType(context),
-                GraphQlTypeBase.GraphQlTypeScalarBoolean => GetBooleanNetType(context),
-                GraphQlTypeBase.GraphQlTypeScalarId => GetIdNetType(context),
-                _ => GetCustomScalarNetType(context)
-            };
+        {
+            GraphQlTypeBase.GraphQlTypeScalarInteger => GetIntegerNetType(context),
+            GraphQlTypeBase.GraphQlTypeScalarString => GetStringNetType(context),
+            GraphQlTypeBase.GraphQlTypeScalarFloat => GetFloatNetType(context),
+            GraphQlTypeBase.GraphQlTypeScalarBoolean => GetBooleanNetType(context),
+            GraphQlTypeBase.GraphQlTypeScalarId => GetIdNetType(context),
+            _ => GetCustomScalarNetType(context)
+        };
 
     internal string GetFullyQualifiedNetTypeName(string baseTypeName, GraphQlTypeKind kind) =>
         GetFullyQualifiedNetTypeName(Configuration, baseTypeName, kind);
@@ -509,21 +482,21 @@ public abstract class GenerationContext
                 .ToLookup(x => x.InterfaceName, x => x.ImplementationType);
 
         foreach (var interfaceType in _complexTypes.Values.Where(t => t.Kind is GraphQlTypeKind.Interface))
-        foreach (var interfaceField in interfaceType.Fields.Where(f => f.Type.UnwrapIfNonNull().Kind is GraphQlTypeKind.List))
-        foreach (var implementationType in interfaceImplementations[interfaceType.Name])
-        {
-            var implementationField = implementationType.Fields.SingleOrDefault(f => f.Name == interfaceField.Name);
-            var isSchemaInvalid = implementationField is null;
-            if (isSchemaInvalid)
-                continue;
+            foreach (var interfaceField in interfaceType.Fields.Where(f => f.Type.UnwrapIfNonNull().Kind is GraphQlTypeKind.List))
+                foreach (var implementationType in interfaceImplementations[interfaceType.Name])
+                {
+                    var implementationField = implementationType.Fields.SingleOrDefault(f => f.Name == interfaceField.Name);
+                    var isSchemaInvalid = implementationField is null;
+                    if (isSchemaInvalid)
+                        continue;
 
-            var isCovarianceRequired = !implementationField.Type.Equals(interfaceField.Type);
-            if (!isCovarianceRequired)
-                continue;
+                    var isCovarianceRequired = !implementationField.Type.Equals(interfaceField.Type);
+                    if (!isCovarianceRequired)
+                        continue;
 
-            _typeFieldCovarianceRequired.Add((interfaceType.Name, interfaceField.Name));
-            break;
-        }
+                    _typeFieldCovarianceRequired.Add((interfaceType.Name, interfaceField.Name));
+                    break;
+                }
     }
 
     private void ResolveTypeUnionLookup()

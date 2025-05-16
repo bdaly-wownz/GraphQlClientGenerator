@@ -4,7 +4,7 @@
     <AssemblyTitle>GraphQL C# Client Generator Console App</AssemblyTitle>
     <Description>A simple strongly typed C# GraphQL client generator console app</Description>
     <OutputType>Exe</OutputType>
-	<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+	<TargetFrameworks>net8.0</TargetFrameworks>
     <Title>GraphQL C# Client Generator Console App</Title>
     <PackageId>GraphQlClientGenerator.Tool</PackageId>
     <PackageTags>GraphQL Client Generator Tool Console</PackageTags>
