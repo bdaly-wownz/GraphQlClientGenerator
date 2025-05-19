@@ -11,10 +11,6 @@ public class MultipleFileGenerationContext : GenerationContext
             <LangVersion>latest</LangVersion>
           </PropertyGroup>
 
-          <ItemGroup Condition="!$(DefineConstants.Contains({GraphQlGenerator.PreprocessorDirectiveDisableNewtonsoftJson}))">
-            <PackageReference Include="Newtonsoft.Json" Version="13.*" />
-          </ItemGroup>
-
         </Project>
 
         """;
@@ -26,9 +22,6 @@ public class MultipleFileGenerationContext : GenerationContext
         using System.ComponentModel;
         using System.Globalization;
         using System.Runtime.Serialization;
-        #if !{GraphQlGenerator.PreprocessorDirectiveDisableNewtonsoftJson}
-        using Newtonsoft.Json;
-        #endif
 
         """;
 

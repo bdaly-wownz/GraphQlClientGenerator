@@ -36,11 +36,11 @@ internal static class NamingHelper
                 .Split(UnderscoreSeparator, StringSplitOptions.RemoveEmptyEntries)
                 .Select(w => RegexUpperCaseFirstLetter.Replace(w, m => m.Value.ToUpper()))
                 // Replace second and all following upper case letters to lower if there is no next lower (ABC -> Abc).
-                .Select(w => RegexFirstCharFollowedByUpperCasesOnly.Replace(w, m => m.Value.ToLower()))
+                //.Select(w => RegexFirstCharFollowedByUpperCasesOnly.Replace(w, m => m.Value.ToLower()))
                 // Set upper case the first lower case following a number (Ab9cd -> Ab9Cd).
-                .Select(w => RegexLowerCaseNextToNumber.Replace(w, m => m.Value.ToUpper()))
-                // Lower second and next upper case letters except the last if it follows by any lower (ABcDEf -> AbcDef).
-                .Select(w => RegexUpperCaseInside.Replace(w, m => m.Value.ToLower()));
+                .Select(w => RegexLowerCaseNextToNumber.Replace(w, m => m.Value.ToUpper()));
+        // Lower second and next upper case letters except the last if it follows by any lower (ABcDEf -> AbcDef).
+        //.Select(w => RegexUpperCaseInside.Replace(w, m => m.Value.ToLower()));
 
         return String.Concat(pascalCase);
     }

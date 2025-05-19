@@ -1,9 +1,0 @@
-[
-  {
-    "patternBaseType": ".+",
-    "patternValueType": ".+",
-    "patternValueName": "^(timestamp|.*(f|F)rom|.*(t|T)o)$",
-    "netTypeName": "DateTime",
-    "formatMask": "O"
-  }
-]

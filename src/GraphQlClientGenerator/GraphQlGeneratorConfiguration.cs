@@ -59,7 +59,7 @@ public class GraphQlGeneratorConfiguration
     /// </summary>
     /// <remarks>For using custom .NET data type <code>Custom</code> option must be used. </remarks>
     public IdTypeMapping IdTypeMapping { get; set; } = IdTypeMapping.Guid;
-        
+
     public PropertyGenerationOption PropertyGeneration { get; set; } = PropertyGenerationOption.AutoProperty;
 
     public JsonPropertyGenerationOption JsonPropertyGeneration { get; set; } = JsonPropertyGenerationOption.CaseInsensitive;
@@ -83,6 +83,7 @@ public class GraphQlGeneratorConfiguration
     public GenerationOrder GenerationOrder { get; set; }
 
     public InputObjectMode InputObjectMode { get; set; }
+
 
     public GraphQlGeneratorConfiguration() => Reset();
 

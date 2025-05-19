@@ -5,7 +5,11 @@ namespace Console1
     {
         public static async Task Main(string[] args)
         {
-            var schema = await GraphQlGenerator.RetrieveSchema(HttpMethod.Get, "https://localhost:7234/graphql");
+            var schema = await GraphQlGenerator.RetrieveSchema(HttpMethod.Get, "https://uat.mobile-api.woolworths.com.au/hermes/iris/v1/graphql", headers: new Dictionary<string, string>
+            {
+                ["X-Api-Key"] = "",
+                ["Authorization"] = "Bearer "
+            });
             var config = new GraphQlGeneratorConfiguration
             {
                 TargetNamespace = "SchemaToPocoPOC.Output",
@@ -18,7 +22,6 @@ namespace Console1
                 EnableNullableReferences = true,
                 DataClassMemberNullability = DataClassMemberNullability.DefinedBySchema,
                 GeneratePartialClasses = false,
-
             };
             var generator = new GraphQlGenerator(config);
             var generatedClasses = generator.GenerateFullClientCSharpFile(schema);

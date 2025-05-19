@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQlClientGenerator.Console", "src\GraphQlClientGenerator.Console\GraphQlClientGenerator.Console.csproj", "{D8D86371-7E15-4275-8968-2FB431EBBDE3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C48B93CC-CA04-4372-AA5C-A8DAFA295BCF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphQlClientGenerator", "src\GraphQlClientGenerator\GraphQlClientGenerator.csproj", "{7CC22B24-8C9F-46DA-BE7C-A07BF5D73834}"
@@ -21,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{50102B00-65EC-4621-8AD2-7C2ABA922D38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{50102B00-65EC-4621-8AD2-7C2ABA922D38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D8D86371-7E15-4275-8968-2FB431EBBDE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8D86371-7E15-4275-8968-2FB431EBBDE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8D86371-7E15-4275-8968-2FB431EBBDE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8D86371-7E15-4275-8968-2FB431EBBDE3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7CC22B24-8C9F-46DA-BE7C-A07BF5D73834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7CC22B24-8C9F-46DA-BE7C-A07BF5D73834}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CC22B24-8C9F-46DA-BE7C-A07BF5D73834}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -50,7 +44,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D8D86371-7E15-4275-8968-2FB431EBBDE3} = {C48B93CC-CA04-4372-AA5C-A8DAFA295BCF}
 		{7CC22B24-8C9F-46DA-BE7C-A07BF5D73834} = {C48B93CC-CA04-4372-AA5C-A8DAFA295BCF}
 		{E068E024-2E58-41AD-A617-37DFA973F2E3} = {4C764379-22AF-4939-9189-9F6C617752F1}
 		{50102B00-65EC-4621-8AD2-7C2ABA922D38} = {C48B93CC-CA04-4372-AA5C-A8DAFA295BCF}

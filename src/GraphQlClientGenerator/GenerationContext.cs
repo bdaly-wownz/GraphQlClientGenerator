@@ -348,7 +348,7 @@ public abstract class GenerationContext
         Configuration.IdTypeMapping switch
         {
             IdTypeMapping.String => NullableNetTypeDescription(context, "string", true),
-            IdTypeMapping.Guid => NullableNetTypeDescription(context, "Guid"),
+            IdTypeMapping.Guid => NullableNetTypeDescription(context, "string"),
             IdTypeMapping.Object => NullableNetTypeDescription(context, "object", true),
             IdTypeMapping.Custom => ScalarFieldTypeProvider.GetCustomScalarFieldType(context),
             _ => throw new InvalidOperationException($"unexpected {nameof(IdTypeMapping)}: \"{Configuration.IdTypeMapping}\"")
